@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { BasketContext, WishlistContext } from '../App';
 import EveryoneWine from '../components/EveryoneWine';
 import { Helmet } from 'react-helmet-async';
+import Owners from '../components/Owners';
 
 const Home = () => {
     const [wines,setWines] = useState([]);
@@ -103,6 +104,7 @@ const Home = () => {
             </div>
         </div>
         <EveryoneWine/>
+        <Owners/>
     </>
   )
 }
