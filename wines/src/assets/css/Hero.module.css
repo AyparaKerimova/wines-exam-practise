@@ -1,0 +1,39 @@
+
+.heroText {
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+}
+.heroText h1 {
+    font-size: 60px;
+    width: 450px;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 992px){
+    .hero {
+        background-image: url("https://preview.colorlib.com/theme/wines/images/img_2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 70vw;
+        height: 90vh;
+        margin: 0 auto;
+        background-position: center;
+    }
+}
+
+@media only screen and (max-width: 576px){
+    .hero {
+        background-image: url("https://preview.colorlib.com/theme/wines/images/img_2.jpg");
+        background-size: cover;
+        height: 90vh;
+        margin: 0 auto;
+    }
+}
+.hero {
+    margin-top: 30px;
+}

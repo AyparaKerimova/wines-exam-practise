@@ -1,0 +1,74 @@
+.wineCard {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(223, 215, 215);
+    margin-top: 36px;
+}
+.wineCard img{
+    width: 290px;
+    position: absolute;
+    height: 350px;
+    top: -40px;
+    left: 18%;
+}
+
+.hoverBox {
+    display: none;
+
+}
+.prices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prices h6 {
+    text-decoration: line-through;
+    color: gray;
+}
+.prices h4 {
+    color: rgb(92, 22, 156);
+}
+.wineCard:hover .hoverBox{
+    display: block;
+    background-color: white;
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:20px;
+}
+
+.cardDesc {
+    bottom: 2px;
+    text-align: center;
+    left: 15%;
+    position: absolute;
+    right: 15%;
+}
+.ratings {
+    display: flex;
+    gap:8px;
+    align-items: center;
+    justify-content: center;
+}
+.ratings i {
+    color: rgb(145, 145, 31);
+}
+.actions {
+    display: flex;
+    gap:12px;
+    align-items: center;
+    justify-content: center;
+}
+.actions button {
+    border: none;
+    background-color: transparent;
+}
+.actions i {
+    font-size: 36px;
+}
