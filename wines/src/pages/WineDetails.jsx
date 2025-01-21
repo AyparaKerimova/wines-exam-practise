@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BASE_URL } from "../constants/api";
+import { Helmet } from "react-helmet-async";
 
 const WineDetails = () => {
   const { id } = useParams();
@@ -17,6 +18,9 @@ const WineDetails = () => {
   }, [id]);
   return (
     <>
+    <Helmet>
+            <title>Wine Details</title>
+          </Helmet>
       <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
         <div className="container mx-auto px-6 flex relative py-16">
           <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">

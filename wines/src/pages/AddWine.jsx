@@ -4,6 +4,7 @@ import { BASE_URL } from "../constants/api";
 import { useFormik } from 'formik';
 import { wineSchema } from "../validations/wineSchema";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddWine = () => {
   const formik = useFormik({
@@ -26,6 +27,9 @@ const AddWine = () => {
   });
   return (
     <>
+     <Helmet>
+        <title>Add Wine</title>
+      </Helmet>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px] bg-white">
           <form onSubmit={formik.handleSubmit}>

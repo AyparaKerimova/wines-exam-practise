@@ -1,11 +1,15 @@
 import React from "react";
 import { useContext } from "react";
 import { BasketContext } from "../App";
+import { Helmet } from "react-helmet-async";
 
 const Basket = () => {
   const { basket, removeFromBasket } = useContext(BasketContext);
   return (
     <>
+    <Helmet>
+            <title>Basket</title>
+          </Helmet>
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>

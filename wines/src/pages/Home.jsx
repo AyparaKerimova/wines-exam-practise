@@ -8,13 +8,15 @@ import WineCard from '../components/WineCard';
 import Swal from 'sweetalert2'
 import { useContext } from 'react';
 import { BasketContext, WishlistContext } from '../App';
+import EveryoneWine from '../components/EveryoneWine';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     const [wines,setWines] = useState([]);
     const [copyWines,setCopyWines] = useState([]);
     const {addToBasket} =useContext(BasketContext);
     const { toggleWishlist } = useContext(WishlistContext);
-
+    const[searchQuery,setSearchQuery] = useState("");
     useEffect(()=>{
         async function fetchData(){
             const resp = await axios.get(BASE_URL);
@@ -60,16 +62,39 @@ const Home = () => {
               });
             }
           });
+    };
+    const filteredWine = wines.filter((wine)=>wine.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    function handleSort(e) {
+        let sortedWine;
+        if (e==="asc") {
+            sortedWine = [...wines].sort((a,b)=>a.newPrice-b.newPrice)
+        } else if (e==="desc"){
+            sortedWine = [...wines].sort((a,b)=>b.newPrice-a.newPrice)
+        }
+        else {
+            sortedWine=[...copyWines]
+        }
+        setWines([...sortedWine])
     }
   return (
     <>
+    <Helmet>
+            <title>Home</title>
+          </Helmet>
         <Hero/>
         <h3 style={{textAlign:"center",marginTop:"40px"}}>OUR PRODUCTS</h3>
         <p style={{textAlign:"center",marginTop:"14px"}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus suscipit nobis nulla obcaecati! Assumenda vero dicta reprehenderit corporis quasi at!</p>
+        <input className='mt-5 ms-5 border rounded' placeholder='search...' type="text" onChange={(e)=>setSearchQuery(e.target.value)}/>
+        <select name="" onChange={(e)=>handleSort(e.target.value)}>
+            <option value="asc">asc</option>
+            <option value="desc">desc</option>
+            <option value="default">default</option>
+        </select>
         <div className='container mt-5'>
             <div className='row'>
                 {
-                    copyWines && copyWines.map((wine)=>{
+                    copyWines && filteredWine.map((wine)=>{
                         return(
                             <WineCard key={wine._id} addWish={() => toggleWishlist(wine)} addToCard={()=>addToBasket(wine)} deleteCard={()=>handleDelete(wine._id)} wineId={wine._id} imageUrl={wine.imageUrl} oldPrice={wine.oldPrice} newPrice={wine.newPrice} name={wine.name}/>
                         )
@@ -77,6 +102,7 @@ const Home = () => {
                 }
             </div>
         </div>
+        <EveryoneWine/>
     </>
   )
 }

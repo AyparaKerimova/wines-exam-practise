@@ -10,6 +10,7 @@ import Wishlist from './pages/Wishlist'
 import { createContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import {  HelmetProvider } from 'react-helmet-async';
 
 export const BasketContext = createContext();
 export const WishlistContext = createContext();
@@ -62,6 +63,7 @@ function App() {
   }
   return (
     <>
+    <HelmetProvider>
     <WishlistContext.Provider value={wishData}>
     <BasketContext.Provider value={data}>
      <Routes>
@@ -76,6 +78,7 @@ function App() {
      </Routes>
      </BasketContext.Provider>
      </WishlistContext.Provider>
+     </HelmetProvider>
     </>
   )
 }

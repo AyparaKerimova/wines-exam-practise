@@ -1,11 +1,15 @@
 import React from "react";
 import { useContext } from "react";
 import { WishlistContext } from "../App";
+import { Helmet } from "react-helmet-async";
 
 const Wishlist = () => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   return (
     <>
+    <Helmet>
+            <title>wishlist</title>
+          </Helmet>
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
@@ -22,7 +26,7 @@ const Wishlist = () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {wishlist &&
-            wishlist.map((item,idx) => {
+            wishlist.map((item, idx) => {
               return (
                 <tr key={idx}>
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
@@ -30,8 +34,8 @@ const Wishlist = () => {
                     {item.newPrice}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <button onClick={()=>toggleWishlist(item)}>
-                     <i class="fa-solid fa-heart"></i>
+                    <button onClick={() => toggleWishlist(item)}>
+                      <i className="fa-solid fa-heart"></i>
                     </button>
                   </td>
                 </tr>
